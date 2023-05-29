@@ -11,7 +11,15 @@
 #include <limits.h>
 #include <stddef.h>
 
+#define LUA_USE_ESP_IDF
 
+#ifdef LUA_USE_ESP_IDF
+
+#ifdef CONFIG_LUA_COMPAT_5_3
+#define LUA_COMPAT_5_3
+#endif
+
+#endif
 /*
 ** ==================================================================
 ** Search for "@@" to find all configurable definitions.
@@ -92,6 +100,24 @@
 		             LUA_CDIR"?.lua;"  LUA_CDIR"?\\init.lua"
 #define LUA_CPATH_DEFAULT \
 	".\\?.dll;"  LUA_CDIR"?.dll;" LUA_CDIR"loadall.dll"
+
+#elif defined(LUA_USE_ESP_IDF)	/* }{ */
+
+#define LUA_ROOT	CONFIG_LUA_ROOT "/"
+#define LUA_LDIR	LUA_ROOT
+#define LUA_CDIR	LUA_ROOT "lib/lua/5.1/"
+
+#if !defined(LUA_PATH_DEFAULT)
+#define LUA_PATH_DEFAULT  \
+        LUA_LDIR"?.lua;"  LUA_LDIR"?/init.lua;" \
+        LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua;" \
+        "./?.lua;" "./?/init.lua"
+#endif
+
+#if !defined(LUA_CPATH_DEFAULT)
+#define LUA_CPATH_DEFAULT \
+        LUA_CDIR"?.so;" LUA_CDIR"loadall.so;" "./?.so"
+#endif
 
 #else
 #define LUA_ROOT	"/usr/local/"
