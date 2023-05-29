@@ -28,7 +28,7 @@ cd components
 git clone https://github.com/Meisterschulen-am-Ostbahnhof-Munchen/esp-idf-lua.git
 ```
 
-OR add it as a Submodule like here: 
+OR add it as a Submodule like here: https://github.com/Meisterschulen-am-Ostbahnhof-Munchen/esp-idf-lua-test-app/blob/master/.gitmodules
 
 Or clone it to any other directory and add it to your project `Makefile` or `CMakeLists.txt`:
 
