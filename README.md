@@ -25,8 +25,10 @@ Clone this repository into `components` subdir of yout project:
 cd ~/my_esp_idf_project
 mkdir components
 cd components
-git clone https://github.com/UncleRus/esp-idf-lua.git
+git clone https://github.com/Meisterschulen-am-Ostbahnhof-Munchen/esp-idf-lua.git
 ```
+
+OR add it as a Submodule like here: 
 
 Or clone it to any other directory and add it to your project `Makefile` or `CMakeLists.txt`:
 
